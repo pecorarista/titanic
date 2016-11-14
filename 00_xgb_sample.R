@@ -40,9 +40,9 @@ cv.stopping <- 10
 hyperparamerters <- expand.grid(
   max_depth = seq(5, 15, by = 3),
   eta = seq(0.01, 0.1, by = 0.001),
-  gamma = seq(1, 1.1, by = 0.2), 
+  gamma = seq(1, 1.1, by = 0.2),
   subsample = seq(1, 1.1, by = 0.2),
-  colsample_bytree = seq(1, 1.1, by = 0.2), 
+  colsample_bytree = seq(1, 1.1, by = 0.2),
   min_child_weight = seq(1, 1.1, by = 0.2),
   max_delta_step = seq(1, 1.1, by = 0.2)
 )
@@ -51,14 +51,14 @@ v.hyper <- vector(length = n.hyper)
 # プログレスバー
 pb <- txtProgressBar(min = 1, max = n.hyper, style = 3)
 for(i in 1 : n.hyper){
-  setTxtProgressBar(pb, i) 
+  setTxtProgressBar(pb, i)
   param <- list(objective = "binary:logistic",
                 eval_metric = "auc",
                 max_depth = hyperparamerters$max_depth[i],
                 eta = hyperparamerters$eta[i],
-                gamma = hyperparamerters$gamma[i], 
+                gamma = hyperparamerters$gamma[i],
                 subsample = hyperparamerters$subsample[i],
-                colsample_bytree = hyperparamerters$colsample_bytree[i], 
+                colsample_bytree = hyperparamerters$colsample_bytree[i],
                 min_child_weight = hyperparamerters$min_child_weight[i],
                 max_delta_step = hyperparamerters$max_delta_step[i]
   )
@@ -72,9 +72,9 @@ param <- list(objective = "binary:logistic",
               eval_metric = "auc",
               max_depth = hyperparamerters$max_depth[best.hyper],
               eta = hyperparamerters$eta[best.hyper],
-              gamma = hyperparamerters$gamma[best.hyper], 
+              gamma = hyperparamerters$gamma[best.hyper],
               subsample = hyperparamerters$subsample[best.hyper],
-              colsample_bytree = hyperparamerters$colsample_bytree[best.hyper], 
+              colsample_bytree = hyperparamerters$colsample_bytree[best.hyper],
               min_child_weight = hyperparamerters$min_child_weight[best.hyper],
               max_delta_step = hyperparamerters$max_delta_step[best.hyper]
 )

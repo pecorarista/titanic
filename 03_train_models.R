@@ -60,7 +60,7 @@ trainXgb <- function(data.train, data.test, names.var, path.output){
 trainGlmnet <- function(data.train, data.test){
   tr = trainControl(
     method = "cv",
-    number = 10,  
+    number = 10,
     allowParallel = TRUE
   )
   trained.model <- train(
@@ -80,7 +80,7 @@ trainGlmnet <- function(data.train, data.test){
 trainRanger <- function(data.train, data.test){
   tr = trainControl(
     method = "cv",
-    number = 10,  
+    number = 10,
     allowParallel = TRUE
   )
   trained.model <- train(
@@ -98,7 +98,7 @@ trainRanger <- function(data.train, data.test){
 trainRf <- function(data.train, data.test){
   tr = trainControl(
     method = "cv",
-    number = 10,  
+    number = 10,
     allowParallel = TRUE
   )
   trained.model <- train(
@@ -116,7 +116,7 @@ trainRf <- function(data.train, data.test){
 trainRborist <- function(data.train, data.test){
   tr = trainControl(
     method = "cv",
-    number = 10,  
+    number = 10,
     allowParallel = TRUE
   )
   trained.model <- train(
@@ -134,7 +134,7 @@ trainRborist <- function(data.train, data.test){
 trainXgbTreeCaret <- function(data.train, data.test){
   tr = trainControl(
     method = "cv",
-    number = 10,  
+    number = 10,
     allowParallel = TRUE
   )
   trained.model <- train(
@@ -152,7 +152,7 @@ trainXgbTreeCaret <- function(data.train, data.test){
 trainXgbLinerCaret <- function(data.train, data.test){
   tr = trainControl(
     method = "cv",
-    number = 10,  
+    number = 10,
     allowParallel = TRUE
   )
   trained.model <- train(

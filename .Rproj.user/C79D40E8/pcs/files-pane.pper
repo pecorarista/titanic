@@ -1,9 +1,0 @@
-{
-    "path" : "~/Projects/kaggle/titanic",
-    "sortOrder" : [
-        {
-            "ascending" : true,
-            "columnIndex" : 2
-        }
-    ]
-}

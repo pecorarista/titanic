@@ -7,18 +7,18 @@ createRawfeauture <- function(train, test){
   data.test.raw <- fread(test, data.table = F, stringsAsFactors = T)
   # train, testをくっつける
   data.full <- bind_rows(data.train.raw, data.test.raw)
-  
+
   # 特徴量加工
   # 敬称
   data.full$Title <- gsub('(.*, )|(\\..*)', '', data.full$Name)
-  rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', 
+  rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don',
                   'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')
-  data.full$Title[data.full$Title == 'Mlle']        <- 'Miss' 
+  data.full$Title[data.full$Title == 'Mlle']        <- 'Miss'
   data.full$Title[data.full$Title == 'Ms']          <- 'Miss'
-  data.full$Title[data.full$Title == 'Mme']         <- 'Mrs' 
+  data.full$Title[data.full$Title == 'Mme']         <- 'Mrs'
   data.full$Title[data.full$Title %in% rare_title]  <- 'Rare Title'
   # 家族の名字
-  data.full$Surname <- sapply(data.full$Name,  
+  data.full$Surname <- sapply(data.full$Name,
                               function(x) strsplit(x, split = '[,.]')[[1]][1])
   # 掛け算変数
   data.full$Pclass_Age <- data.full$Pclass * data.full$Age
@@ -31,7 +31,7 @@ createRawfeauture <- function(train, test){
   data.full$SibSp_Parch <- data.full$SibSp * data.full$Parch
   data.full$SibSp_Fare <- data.full$SibSp * data.full$Fare
   data.full$Parch_Fare <- data.full$Pclass * data.full$Fare
-  
+
   # # 家族について
   data.full$Fsize <- data.full$SibSp + data.full$Parch + 1
   data.full$Family <- paste(data.full$Surname, data.full$Fsize, sep='_')
@@ -105,7 +105,7 @@ createRawfeauture <- function(train, test){
   data.full$cabin_num <- cabin_num
   data.full$cabin_class_first <- cabin_class_first
   data.full$cabin_class_second <- cabin_class_second
-  
+
   # 生データからいらない変数は除去
   data.full <- data.full %>% select(-Name, -Ticket, -Cabin) %>% as.data.frame()
   return(data.full)
